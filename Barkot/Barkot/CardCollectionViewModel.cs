@@ -38,10 +38,12 @@ namespace Barkot
             }
         }
 
+        public static IEnumerable<CardViewModel> someItems;
+        public static Repository repo;
         public CardCollectionViewModel()
         {
-            Cards.Add(new CardViewModel("Guess", "9078604371100650", "CODE_128", "guess.com"));
-            Cards.Add(new CardViewModel("Timberland", "7020015082238", "EAN_13", "timberland.com"));
+            //Инициализация списка тут
+            Cards = repo.GetItems();
 
 
             //Задаем новую команду, создавая новый объект Command
@@ -78,7 +80,7 @@ namespace Barkot
         //Создание переменной команды, которая задается в конструкторе класса
         public ICommand AddCommand { private set; get; }
         // (???)
-        public IList<CardViewModel> Cards { get; } = new ObservableCollection<CardViewModel>();
+        public IEnumerable<CardViewModel> Cards { get; } = new ObservableCollection<CardViewModel>();
     protected void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

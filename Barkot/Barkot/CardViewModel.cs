@@ -1,23 +1,18 @@
-﻿using System.ComponentModel;
+﻿using SQLite;
+using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Barkot
 {
+    [Table("Cards")]
     public class CardViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private Card card;
-        public CardViewModel(string company, string barcode, string type, string site)
+        public CardViewModel()
         {
-            card = new Card(company, barcode, type, site);
-            Company = company;
-            Barcode = barcode;
-            Type = type;
-            Site = @"https://logo.clearbit.com/" + site;
-
             EditBarcodeCommand = new Command(
-                execute: ()=>
+                execute: () =>
                 {
                     Barcode = "7020015082238";
                 }
@@ -32,50 +27,52 @@ namespace Barkot
         }
         public ICommand EditBarcodeCommand { private set; get; }
         public ICommand EditCompanyCommand { private set; get; }
+        [PrimaryKey, AutoIncrement, Column("id")]
+        public int Id { get; set; }
         public string Company
         {
-            get { return card.Company; }
+            get { return Company; }
             set
             {
-                if (card.Company != value)
+                if (Company != value)
                 {
-                    card.Company = value;
+                    Company = value;
                     OnPropertyChanged("Company");
                 }
             }
         }
         public string Barcode
         {
-            get { return card.Barcode; }
+            get { return Barcode; }
             set
             {
-                if (card.Barcode != value)
+                if (Barcode != value)
                 {
-                    card.Barcode = value;
+                    Barcode = value;
                     OnPropertyChanged("Barcode");
                 }
             }
         }
         public string Type
         {
-            get { return card.Type; }
+            get { return Type; }
             set
             {
-                if (card.Type != value)
+                if (Type != value)
                 {
-                    card.Type = value;
+                    Type = value;
                     OnPropertyChanged("Type");
                 }
             }
         }
         public string Site
         {
-            get { return card.Site; }
+            get { return Site; }
             set
             {
-                if (card.Site != value)
+                if (Site != value)
                 {
-                    card.Site = value;
+                    Site = value;
                     OnPropertyChanged("Site");
                 }
             }

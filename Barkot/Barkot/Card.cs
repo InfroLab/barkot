@@ -1,4 +1,4 @@
-﻿using SQLite;
+﻿/*using SQLite;
 namespace Barkot
 {
     [Table("Cards")]
@@ -33,3 +33,4 @@ namespace Barkot
         }
     }
 }
+*/
