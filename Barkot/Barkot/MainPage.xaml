@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             
+             xmlns:local="clr-namespace:Barkot"
+             xmlns:forms="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
+             xmlns:zx="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
+             xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             mc:Ignorable="d"
+             x:Class="Barkot.MainPage">
+    <!--- Строчка с "xmlns:local" необходима, чтобы работал префикс local указывающий на неймспейс проекта-->
+    <ScrollView>
+        <StackLayout Padding="0" Margin="0" Orientation="Vertical">
+            <StackLayout.BindingContext>
+                <local:CardCollectionViewModel />
+            </StackLayout.BindingContext>
+            <ListView SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding Cards}" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="10" HeightRequest="148" Padding="10" CornerRadius="5" HasShadow="True" BackgroundColor="#FFFFFF" InputTransparent="False" >
+                                <StackLayout Orientation="Vertical">
+                                    <Button Text="+" Command="{Binding EditTypeCommand}" BackgroundColor="#EBEBEB" HeightRequest="20" HorizontalOptions="End"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <WebView Source="{Binding Site}" HeightRequest="128" WidthRequest="128" VerticalOptions="FillAndExpand"/>
+                                        <StackLayout Spacing="5" Orientation="Vertical">
+                                            <Label Text="{Binding Company}" FontSize="Small" TextColor="#232323" />
+                                            <Label Text="{Binding Barcode}" FontSize="Small" TextColor="#232323" />
+                                            <forms:ZXingBarcodeImageView  BarcodeFormat="{Binding Type}" BarcodeValue="{Binding Barcode}" HeightRequest="40" WidthRequest="200">
+                                                <zx:ZXingBarcodeImageView.BarcodeOptions>
+                                                    <zxcm:EncodingOptions Width="200" Height="40" PureBarcode="True"/>
+                                                </zx:ZXingBarcodeImageView.BarcodeOptions>
+                                            </forms:ZXingBarcodeImageView>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                                </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
