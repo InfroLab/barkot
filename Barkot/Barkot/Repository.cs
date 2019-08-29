@@ -10,6 +10,7 @@ namespace Barkot
         SQLiteConnection database;
         public Repository(string filename)
         {
+            //???
             string databasePath = DependencyService.Get<ISQLite>().GetDatabasePath(filename);
             database = new SQLiteConnection(databasePath);
             database.CreateTable<CardViewModel>();

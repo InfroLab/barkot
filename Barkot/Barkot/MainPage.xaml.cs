@@ -11,5 +11,10 @@ namespace Barkot
         {
             InitializeComponent();
         }
+
+        public static async void NavigateToEditCardPage(CardViewModel card)
+        {
+            await Navigation.PushAsync(new EditCardPage(card));
+        }
     }
 }

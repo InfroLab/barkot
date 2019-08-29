@@ -11,22 +11,25 @@ namespace Barkot
         public event PropertyChangedEventHandler PropertyChanged;
         public CardViewModel()
         {
-            EditBarcodeCommand = new Command(
+            /*EditBarcodeCommand = new Command(
                 execute: () =>
                 {
                     Barcode = "7020015082238";
                 }
-                );
-
-            EditCompanyCommand = new Command(
+                );*/
+            EditCardCommand = new Command(
                 execute: () =>
                 {
-                    Company = "U.S. POLO ASSN.";
+                    //Вызов функции и передача ей текущего экземляра для правки
+                    //карточки
+                    //TO-DO: сделать красивее
+                    MainPage.NavigateToEditCardPage(this);
                 }
                 );
         }
-        public ICommand EditBarcodeCommand { private set; get; }
-        public ICommand EditCompanyCommand { private set; get; }
+        /*public ICommand EditBarcodeCommand { private set; get; }
+        public ICommand EditCompanyCommand { private set; get; }*/
+        public ICommand EditCardCommand { private set; get; }
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }
         public string Company
