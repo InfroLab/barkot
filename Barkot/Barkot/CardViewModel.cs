@@ -11,19 +11,14 @@ namespace Barkot
         public event PropertyChangedEventHandler PropertyChanged;
         public CardViewModel()
         {
-            /*EditBarcodeCommand = new Command(
-                execute: () =>
-                {
-                    Barcode = "7020015082238";
-                }
-                );*/
             EditCardCommand = new Command(
                 execute: () =>
                 {
-                    //Вызов функции и передача ей текущего экземляра для правки
-                    //карточки
-                    //TO-DO: сделать красивее
-                    MainPage.NavigateToEditCardPage(this);
+                    //Создадим экземляр класса страницы передав в конструктор
+                    //текущий экземпляр карточки
+                    //Передадим экземпляр класса страницы в его функцию
+                    EditCardPage page = new EditCardPage(ref this);
+                    page.NavigateToEditCardPage(page);
                 }
                 );
         }
