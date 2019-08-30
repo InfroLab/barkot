@@ -10,9 +10,7 @@ namespace Barkot
     {
         CardViewModel cardEdit;
         bool propertyIsEditing;
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         public CardViewModel CardEdit
         {
             get { return cardEdit; }
@@ -41,7 +39,7 @@ namespace Barkot
         public static IEnumerable<CardViewModel> someItems;
         public static Repository repo;
         //Обновление списка
-        public void UpdateCards()
+        public static void UpdateCards()
         {
             Cards = null;
             Cards = repo.GetItems();
@@ -85,8 +83,8 @@ namespace Barkot
         }
         //Создание переменной команды, которая задается в конструкторе класса
         public ICommand AddCommand { private set; get; }
-        // (???)
-        public IEnumerable<CardViewModel> Cards { get; set; } = new ObservableCollection<CardViewModel>();
+        // Обозреваемые список карточек
+        public static IEnumerable<CardViewModel> Cards { get; set; } = new ObservableCollection<CardViewModel>();
     protected void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

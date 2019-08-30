@@ -59,7 +59,8 @@ namespace Barkot
             //Обновляем элемент
             repo.SaveItem(new_card);
 
-            //Обновить список
+            //Обновляем список статическим методом
+            CardCollectionViewModel.UpdateCards();
         }
     }
 }

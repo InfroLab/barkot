@@ -17,14 +17,20 @@ namespace Barkot
                     //Создадим экземляр класса страницы передав в конструктор
                     //текущий экземпляр карточки
                     //Передадим экземпляр класса страницы в его функцию
-                    EditCardPage page = new EditCardPage(ref this);
+                    EditCardPage page = new EditCardPage(this);
                     page.NavigateToEditCardPage(page);
                 }
                 );
+            AddCardCommand = new Command(
+                execute: () =>
+                {
+
+                }
+                );
         }
-        /*public ICommand EditBarcodeCommand { private set; get; }
-        public ICommand EditCompanyCommand { private set; get; }*/
         public ICommand EditCardCommand { private set; get; }
+        public ICommand AddCardCommand { private set; get; }
+        public ICommand AddCardPhotoCommand { private set; get; }
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }
         public string Company
