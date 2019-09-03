@@ -12,7 +12,6 @@ namespace Barkot
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditCardPage : ContentPage
     {
-        private Repository repo;
         private CardViewModel old_card;
         public EditCardPage()
         {
@@ -44,7 +43,7 @@ namespace Barkot
         //Обноыление карточки
         public void UpdateCard(object seder, EventArgs e)
         {
-            CardViewModel new_card = new CardViewModel();
+            Card new_card = new Card();
 
             //Переписываем неизменяемые поля
             new_card.Id = old_card.Id;
@@ -57,7 +56,7 @@ namespace Barkot
             new_card.Barcode = Barcode.Text;
 
             //Обновляем элемент
-            repo.SaveItem(new_card);
+            App.Database.SaveItem(new_card);
 
             //Обновляем список статическим методом
             CardCollectionViewModel.UpdateCards();

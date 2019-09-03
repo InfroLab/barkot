@@ -6,9 +6,9 @@ namespace Barkot
 {
     public partial class App : Application
     {
-
-        public const string DATABASE_NAME = "cards.db";
-        public static Repository database;
+        //Имя БД
+        public const string DATABASE_NAME = "card2.db";
+        private static Repository database;
         public static Repository Database
         {
             get

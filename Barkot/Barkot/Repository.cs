@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
+using System;
+using System.Collections.ObjectModel;
 
 namespace Barkot
 {
@@ -13,25 +15,31 @@ namespace Barkot
             //???
             string databasePath = DependencyService.Get<ISQLite>().GetDatabasePath(filename);
             database = new SQLiteConnection(databasePath);
-            database.CreateTable<CardViewModel>();
+            database.CreateTable<Card>();
         }
         //Получение всех Элементов
-        public IEnumerable<CardViewModel> GetItems()
+        public IList<CardViewModel> GetItems()
         {
-            return (from i in database.Table<CardViewModel>() select i).ToList();
+            var table = database.Table<Card>();
+            IList<CardViewModel> records = new ObservableCollection<CardViewModel>();
+            foreach(var record in table)
+            {
+                records.Add(new CardViewModel(record.Id, record.Company, record.Barcode, record.Type, record.Site));
+            }
+            return records;
         }
         //Получение элемента по id
-        public CardViewModel GetItem(int id)
+        public Card GetItem(int id)
         {
-            return database.Get<CardViewModel>(id);
+            return database.Get<Card>(id);
         }
         //Удаление элемента
         public int DeleteItem(int id)
         {
-            return database.Delete<CardViewModel>(id);
+            return database.Delete<Card>(id);
         }
         //Сохранение элемента
-        public int SaveItem(CardViewModel item)
+        public int SaveItem(Card item)
         {
             if (item.Id != 0)
             {

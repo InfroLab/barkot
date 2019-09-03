@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using System;
 using Xamarin.Forms;
 
 namespace Barkot
@@ -35,17 +36,15 @@ namespace Barkot
                 }
             }
         }
-
-        public static IEnumerable<CardViewModel> someItems;
-        public static Repository repo;
         //Обновление списка
         public static void UpdateCards()
         {
-            Cards = null;
-            Cards = repo.GetItems();
+            Cards = App.Database.GetItems();
+            Console.WriteLine("DB LOADED");
         }
         public CardCollectionViewModel()
         {
+
             //Инициализация списка тут
             UpdateCards();
 
@@ -83,8 +82,8 @@ namespace Barkot
         }
         //Создание переменной команды, которая задается в конструкторе класса
         public ICommand AddCommand { private set; get; }
-        // Обозреваемые список карточек
-        public static IEnumerable<CardViewModel> Cards { get; set; } = new ObservableCollection<CardViewModel>();
+        // Обозреваемый список карточек
+        public static IList<CardViewModel> Cards { get; set; } = new ObservableCollection<CardViewModel>();
     protected void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

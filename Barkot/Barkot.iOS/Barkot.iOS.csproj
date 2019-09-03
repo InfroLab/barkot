@@ -52,8 +52,11 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>iPhone Developer: artyomgt@mail.ru (GSV4XALYH7)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignEntitlements>
+    </CodesignEntitlements>
     <CodesignProvision>iOS Team Provisioning Profile: com.xamari.Barkot</CodesignProvision>
+    <CodesignExtraArgs />
+    <CodesignResourceRules />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -75,7 +78,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Resources\cards.db" />
+    <BundleResource Include="Resources\card2.db" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\guess.imageset\guess.png">
@@ -158,9 +161,6 @@
       <Project>{38E6EEB7-B45A-46DC-9A5B-63DA386237F3}</Project>
       <Name>Barkot</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\balance.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\guess.png" />
