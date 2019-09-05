@@ -18,10 +18,10 @@ namespace Barkot
             database.CreateTable<Card>();
         }
         //Получение всех Элементов
-        public IList<CardViewModel> GetItems()
+        public ObservableCollection<CardViewModel> GetItems()
         {
             var table = database.Table<Card>();
-            IList<CardViewModel> records = new ObservableCollection<CardViewModel>();
+            ObservableCollection<CardViewModel> records = new ObservableCollection<CardViewModel>();
             foreach(var record in table)
             {
                 records.Add(new CardViewModel(record.Id, record.Company, record.Barcode, record.Type, record.Site));

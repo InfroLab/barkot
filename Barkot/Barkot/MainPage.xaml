@@ -12,10 +12,10 @@
     <!--- Строчка с "xmlns:local" необходима, чтобы работал префикс local указывающий на неймспейс проекта-->
     <ScrollView>
         <StackLayout Padding="0" Margin="0" Orientation="Vertical">
-            <StackLayout.BindingContext>
+            <!--<StackLayout.BindingContext>
                 <local:CardCollectionViewModel />
-            </StackLayout.BindingContext>
-            <ListView SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding Cards}" SelectionMode="None">
+            </StackLayout.BindingContext>-->
+            <ListView SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding Cards, Mode=TwoWay}" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -35,7 +35,7 @@
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
-                                </Frame>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

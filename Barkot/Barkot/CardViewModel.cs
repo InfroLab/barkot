@@ -8,25 +8,6 @@ namespace Barkot
     public class CardViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public CardViewModel()
-        {
-            EditCardCommand = new Command(
-                execute: () =>
-                {
-                    //Создадим экземляр класса страницы передав в конструктор
-                    //текущий экземпляр карточки
-                    //Передадим экземпляр класса страницы в его функцию
-                    EditCardPage page = new EditCardPage(this);
-                    page.NavigateToEditCardPage(page);
-                }
-                );
-            AddCardCommand = new Command(
-                execute: () =>
-                {
-
-                }
-                );
-        }
         public CardViewModel(int id, string company, string barcode, string type, string site)
         {
             EditCardCommand = new Command(
@@ -45,6 +26,12 @@ namespace Barkot
 
                 }
                 );
+            AddCardPhotoCommand = new Command(
+                execute: () =>
+                {
+
+                }
+                );
 
             Id = id;
             Company = company;
@@ -56,7 +43,7 @@ namespace Barkot
         public ICommand AddCardCommand { private set; get; }
         public ICommand AddCardPhotoCommand { private set; get; }
 
-        private int id = -1;
+        private int id;
         private string company = "";
         private string barcode = "";
         private string type = "";
@@ -107,7 +94,7 @@ namespace Barkot
             {
                 if (site != value)
                 {
-                    site = value;
+                    site = @"https://logo.clearbit.com/" + value;
                     OnPropertyChanged("Site");
                 }
             }
