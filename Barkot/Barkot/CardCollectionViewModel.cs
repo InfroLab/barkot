@@ -46,7 +46,8 @@ namespace Barkot
         {
 
             //Инициализация списка тут
-            UpdateCards();
+            Cards.Add(new CardViewModel(1, "Guess", "9078604371100650", "CODE_128", "guess.com"));
+            Cards.Add(new CardViewModel(2, "Timberland", "7020015082238", "EAN_13", "timberland.com"));
 
 
             //Задаем новую команду, создавая новый объект Command
