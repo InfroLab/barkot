@@ -2,23 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"            
-             xmlns:local="clr-namespace:Barkot"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"       
              xmlns:forms="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
              xmlns:zx="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" 
              xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
              mc:Ignorable="d"
              x:Class="Barkot.MainPage">
-    <!--- Строчка с "xmlns:local" необходима, чтобы работал префикс local указывающий на неймспейс проекта-->
     <ScrollView>
         <StackLayout Padding="0" Margin="0" Orientation="Vertical">
-            <!--<StackLayout.BindingContext>
-                <local:CardCollectionViewModel />
-            </StackLayout.BindingContext>-->
-            <ListView SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding Cards, Mode=TwoWay}" SelectionMode="None">
+            <ListView SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding Cards}" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.View>
                             <Frame Margin="10" HeightRequest="148" Padding="10" CornerRadius="5" HasShadow="True" BackgroundColor="#FFFFFF" InputTransparent="False" >
                                 <StackLayout Orientation="Vertical">
                                     <Button Text="Edit" Command="{Binding EditCardCommand}" BackgroundColor="#EBEBEB" HeightRequest="20" HorizontalOptions="End"/>
@@ -36,6 +32,7 @@
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>
+                            </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
