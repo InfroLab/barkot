@@ -59,7 +59,7 @@ namespace Barkot
             App.Database.SaveItem(new_card);
 
             //Обновляем список статическим методом
-            CardCollectionViewModel.UpdateCards();
+            //CardCollectionViewModel.UpdateCards();
         }
     }
 }

@@ -1,18 +1,29 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Windows.Input;
+﻿using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System;
-using Xamarin.Forms;
 
 namespace Barkot
 {
     public class CardCollectionViewModel : INotifyPropertyChanged
     {
-        public static ObservableCollection<CardViewModel> Cards { get; set; }
+        public ObservableCollection<CardViewModel> Cards
+        {
+            get
+            {
+                return Cards;
+            }
+            set
+            {
+                if (Cards != value)
+                {
+                    Cards = value;
+                    OnPropertyChanged("Cards");
+                }
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         //Обновление списка
-        public static void UpdateCards()
+        public void UpdateCards()
         {
             Cards = App.Database.GetItems();
             Console.WriteLine("DB LOADED");
