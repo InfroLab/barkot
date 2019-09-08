@@ -6,17 +6,18 @@ namespace Barkot
 {
     public class CardCollectionViewModel : INotifyPropertyChanged
     {
+        private ObservableCollection<CardViewModel> cards = new ObservableCollection<CardViewModel>();
         public ObservableCollection<CardViewModel> Cards
         {
             get
             {
-                return Cards;
+                return cards;
             }
             set
             {
-                if (Cards != value)
+                if (cards != value)
                 {
-                    Cards = value;
+                    cards = value;
                     OnPropertyChanged("Cards");
                 }
             }
@@ -30,9 +31,6 @@ namespace Barkot
         }
         public CardCollectionViewModel()
         {
-            //Создаем пустой список
-            Cards = new ObservableCollection<CardViewModel>();
-
             //Инициализация списка тут
             UpdateCards();
             Console.WriteLine("LIST LOADED");
